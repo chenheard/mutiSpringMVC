@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oasystem.dao.TUserMapper" >
+  <resultMap id="BaseResultMap" type="com.oasystem.pojo.TUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_BIRTHDAY" property="cBirthday" jdbcType="TIMESTAMP" />
+    <result column="C_GENDER" property="cGender" jdbcType="VARCHAR" />
+    <result column="C_NICKNAME" property="cNickname" jdbcType="VARCHAR" />
+    <result column="C_PASSWORD" property="cPassword" jdbcType="VARCHAR" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+    <result column="C_STATION" property="cStation" jdbcType="VARCHAR" />
+    <result column="C_TELEPHONE" property="cTelephone" jdbcType="VARCHAR" />
+    <result column="C_USERNAME" property="cUsername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, age, name, C_ID, C_BIRTHDAY, C_GENDER, C_NICKNAME, C_PASSWORD, C_REMARK, C_STATION, 
+    C_TELEPHONE, C_USERNAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oasystem.pojo.TUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!--开始 查询用户名和密码-->
+  <select id="selectByNamePwd" parameterType="com.oasystem.pojo.TUser" resultType="com.oasystem.pojo.TUser">
+  	select * from TUser where 1=1 
+  	<if test="username!=null and username!=''">
+  		and username = #{username,jdbcType=VARCHAR}
+  	</if>
+  	<if test="password!=null and password!=''">
+  		and password = #{password,jdbcType=VARCHAR}
+  	</if>
+  </select>
+  <!--结束 查询用户名和密码 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oasystem.pojo.TUserExample" >
+    delete from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oasystem.pojo.TUser" >
+    insert into t_user (id, age, name, 
+      C_ID, C_BIRTHDAY, C_GENDER, 
+      C_NICKNAME, C_PASSWORD, C_REMARK, 
+      C_STATION, C_TELEPHONE, C_USERNAME
+      )
+    values (#{id,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{Id,jdbcType=INTEGER}, #{Birthday,jdbcType=TIMESTAMP}, #{Gender,jdbcType=VARCHAR}, 
+      #{Nickname,jdbcType=VARCHAR}, #{Password,jdbcType=VARCHAR}, #{Remark,jdbcType=VARCHAR}, 
+      #{Station,jdbcType=VARCHAR}, #{Telephone,jdbcType=VARCHAR}, #{Username,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oasystem.pojo.TUser" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cBirthday != null" >
+        C_BIRTHDAY,
+      </if>
+      <if test="cGender != null" >
+        C_GENDER,
+      </if>
+      <if test="cNickname != null" >
+        C_NICKNAME,
+      </if>
+      <if test="cPassword != null" >
+        C_PASSWORD,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+      <if test="cStation != null" >
+        C_STATION,
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE,
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        #{Id,jdbcType=INTEGER},
+      </if>
+      <if test="cBirthday != null" >
+        #{Birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cGender != null" >
+        #{Gender,jdbcType=VARCHAR},
+      </if>
+      <if test="cNickname != null" >
+        #{Nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null" >
+        #{Password,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{Remark,jdbcType=VARCHAR},
+      </if>
+      <if test="cStation != null" >
+        #{Station,jdbcType=VARCHAR},
+      </if>
+      <if test="cTelephone != null" >
+        #{Telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cUsername != null" >
+        #{Username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oasystem.pojo.TUserExample" resultType="java.lang.Integer" >
+    select count(*) from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cBirthday != null" >
+        C_BIRTHDAY = #{record.cBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cGender != null" >
+        C_GENDER = #{record.cGender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cNickname != null" >
+        C_NICKNAME = #{record.cNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPassword != null" >
+        C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cRemark != null" >
+        C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cStation != null" >
+        C_STATION = #{record.cStation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTelephone != null" >
+        C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cUsername != null" >
+        C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_user
+    set id = #{record.id,jdbcType=INTEGER},
+      age = #{record.age,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      C_ID = #{record.cId,jdbcType=INTEGER},
+      C_BIRTHDAY = #{record.cBirthday,jdbcType=TIMESTAMP},
+      C_GENDER = #{record.cGender,jdbcType=VARCHAR},
+      C_NICKNAME = #{record.cNickname,jdbcType=VARCHAR},
+      C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      C_REMARK = #{record.cRemark,jdbcType=VARCHAR},
+      C_STATION = #{record.cStation,jdbcType=VARCHAR},
+      C_TELEPHONE = #{record.cTelephone,jdbcType=VARCHAR},
+      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oasystem.pojo.TUser" >
+    update t_user
+    <set >
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null" >
+        C_ID = #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cBirthday != null" >
+        C_BIRTHDAY = #{cBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cGender != null" >
+        C_GENDER = #{cGender,jdbcType=VARCHAR},
+      </if>
+      <if test="cNickname != null" >
+        C_NICKNAME = #{cNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null" >
+        C_PASSWORD = #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cStation != null" >
+        C_STATION = #{cStation,jdbcType=VARCHAR},
+      </if>
+      <if test="cTelephone != null" >
+        C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME = #{cUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oasystem.pojo.TUser" >
+    update t_user
+    set age = #{age,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      C_ID = #{cId,jdbcType=INTEGER},
+      C_BIRTHDAY = #{cBirthday,jdbcType=TIMESTAMP},
+      C_GENDER = #{cGender,jdbcType=VARCHAR},
+      C_NICKNAME = #{cNickname,jdbcType=VARCHAR},
+      C_PASSWORD = #{cPassword,jdbcType=VARCHAR},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      C_STATION = #{cStation,jdbcType=VARCHAR},
+      C_TELEPHONE = #{cTelephone,jdbcType=VARCHAR},
+      C_USERNAME = #{cUsername,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
