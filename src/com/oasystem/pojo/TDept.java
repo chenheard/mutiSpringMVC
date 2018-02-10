@@ -1,37 +1,33 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
+public class TDept {
+    private Integer cId;
 
-public class TDept implements Serializable{
-    private Integer Id;
+    private String cDeptCode;
 
-    private String DeptCode;
+    private String cDeptName;
 
-    private String DeptName;
+    public Integer getcId() {
+        return cId;
+    }
 
-	public Integer getId() {
-		return Id;
-	}
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public String getcDeptCode() {
+        return cDeptCode;
+    }
 
-	public String getDeptCode() {
-		return DeptCode;
-	}
+    public void setcDeptCode(String cDeptCode) {
+        this.cDeptCode = cDeptCode == null ? null : cDeptCode.trim();
+    }
 
-	public void setDeptCode(String deptCode) {
-		DeptCode = deptCode;
-	}
+    public String getcDeptName() {
+        return cDeptName;
+    }
 
-	public String getDeptName() {
-		return DeptName;
-	}
-
-	public void setDeptName(String deptName) {
-		DeptName = deptName;
-	}
-
-   
+    public void setcDeptName(String cDeptName) {
+        this.cDeptName = cDeptName == null ? null : cDeptName.trim();
+    }
 }

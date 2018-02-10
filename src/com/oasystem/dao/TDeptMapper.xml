@@ -1,5 +1,181 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.oasystem.dao.TDeptMapper" >
-  
+  <resultMap id="BaseResultMap" type="com.oasystem.pojo.TDept" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_DEPT_CODE" property="cDeptCode" jdbcType="VARCHAR" />
+    <result column="C_DEPT_NAME" property="cDeptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_DEPT_CODE, C_DEPT_NAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oasystem.pojo.TDeptExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dept
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_dept
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oasystem.pojo.TDeptExample" >
+    delete from t_dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oasystem.pojo.TDept" >
+    insert into t_dept (C_ID, C_DEPT_CODE, C_DEPT_NAME
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cDeptCode,jdbcType=VARCHAR}, #{cDeptName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oasystem.pojo.TDept" >
+    insert into t_dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cDeptCode != null" >
+        C_DEPT_CODE,
+      </if>
+      <if test="cDeptName != null" >
+        C_DEPT_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cDeptCode != null" >
+        #{cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cDeptName != null" >
+        #{cDeptName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oasystem.pojo.TDeptExample" resultType="java.lang.Integer" >
+    select count(*) from t_dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_dept
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cDeptCode != null" >
+        C_DEPT_CODE = #{record.cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cDeptName != null" >
+        C_DEPT_NAME = #{record.cDeptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_dept
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_DEPT_CODE = #{record.cDeptCode,jdbcType=VARCHAR},
+      C_DEPT_NAME = #{record.cDeptName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oasystem.pojo.TDept" >
+    update t_dept
+    <set >
+      <if test="cDeptCode != null" >
+        C_DEPT_CODE = #{cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cDeptName != null" >
+        C_DEPT_NAME = #{cDeptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oasystem.pojo.TDept" >
+    update t_dept
+    set C_DEPT_CODE = #{cDeptCode,jdbcType=VARCHAR},
+      C_DEPT_NAME = #{cDeptName,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
 </mapper>

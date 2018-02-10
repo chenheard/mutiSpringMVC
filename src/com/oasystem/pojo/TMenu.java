@@ -1,66 +1,63 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
+public class TMenu {
+    private Integer cId;
 
-public class TMenu implements Serializable{
-    private Integer Id;
+    private String cDescription;
 
-    private String Description;
+    private String cName;
 
-    private String Name;
+    private String cPage;
 
-    private String Page;
+    private Integer cPriority;
 
-    private Integer Priority;
+    private Integer cPid;
 
-    private Integer Pid;
+    public Integer getcId() {
+        return cId;
+    }
 
-	public Integer getId() {
-		return Id;
-	}
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public String getcDescription() {
+        return cDescription;
+    }
 
-	public String getDescription() {
-		return Description;
-	}
+    public void setcDescription(String cDescription) {
+        this.cDescription = cDescription == null ? null : cDescription.trim();
+    }
 
-	public void setDescription(String description) {
-		Description = description;
-	}
+    public String getcName() {
+        return cName;
+    }
 
-	public String getName() {
-		return Name;
-	}
+    public void setcName(String cName) {
+        this.cName = cName == null ? null : cName.trim();
+    }
 
-	public void setName(String name) {
-		Name = name;
-	}
+    public String getcPage() {
+        return cPage;
+    }
 
-	public String getPage() {
-		return Page;
-	}
+    public void setcPage(String cPage) {
+        this.cPage = cPage == null ? null : cPage.trim();
+    }
 
-	public void setPage(String page) {
-		Page = page;
-	}
+    public Integer getcPriority() {
+        return cPriority;
+    }
 
-	public Integer getPriority() {
-		return Priority;
-	}
+    public void setcPriority(Integer cPriority) {
+        this.cPriority = cPriority;
+    }
 
-	public void setPriority(Integer priority) {
-		Priority = priority;
-	}
+    public Integer getcPid() {
+        return cPid;
+    }
 
-	public Integer getPid() {
-		return Pid;
-	}
-
-	public void setPid(Integer pid) {
-		Pid = pid;
-	}
-    
+    public void setcPid(Integer cPid) {
+        this.cPid = cPid;
+    }
 }

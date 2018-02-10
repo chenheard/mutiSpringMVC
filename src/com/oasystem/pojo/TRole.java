@@ -1,8 +1,6 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
-
-public class TRole  implements Serializable{
+public class TRole {
     private Integer cId;
 
     private String cDescription;

@@ -1,134 +1,134 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TUser{
+public class TUser {
     private Integer id;
 
-    private Integer age;
+    private Integer cAge;
 
-    private String salary;
+    private String cSalary;
 
     private Integer cId;
 
-    private String birthday;
+    private String cBirthday;
 
-    private String gender;
+    private String cGender;
 
-    private String nickname;
+    private String cNickname;
 
-    private String password;
+    private String cPassword;
 
-    private String remark;
+    private String cRemark;
 
-    private String station;
+    private String cStation;
 
-    private String telephone;
+    private String cTelephone;
 
-    private String username;
+    private String cUsername;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getcAge() {
+        return cAge;
+    }
+
+    public void setcAge(Integer cAge) {
+        this.cAge = cAge;
+    }
+
+    public String getcSalary() {
+        return cSalary;
+    }
+
+    public void setcSalary(String cSalary) {
+        this.cSalary = cSalary == null ? null : cSalary.trim();
+    }
+
+    public Integer getcId() {
+        return cId;
+    }
+
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
+
+    public String getcBirthday() {
+        return cBirthday;
+    }
+
+    public void setcBirthday(String cBirthday) {
+        this.cBirthday = cBirthday;
+    }
+
+    public String getcGender() {
+        return cGender;
+    }
+
+    public void setcGender(String cGender) {
+        this.cGender = cGender == null ? null : cGender.trim();
+    }
+
+    public String getcNickname() {
+        return cNickname;
+    }
+
+    public void setcNickname(String cNickname) {
+        this.cNickname = cNickname == null ? null : cNickname.trim();
+    }
+
+    public String getcPassword() {
+        return cPassword;
+    }
+
+    public void setcPassword(String cPassword) {
+        this.cPassword = cPassword == null ? null : cPassword.trim();
+    }
+
+    public String getcRemark() {
+        return cRemark;
+    }
+
+    public void setcRemark(String cRemark) {
+        this.cRemark = cRemark == null ? null : cRemark.trim();
+    }
+
+    public String getcStation() {
+        return cStation;
+    }
+
+    public void setcStation(String cStation) {
+        this.cStation = cStation == null ? null : cStation.trim();
+    }
+
+    public String getcTelephone() {
+        return cTelephone;
+    }
+
+    public void setcTelephone(String cTelephone) {
+        this.cTelephone = cTelephone == null ? null : cTelephone.trim();
+    }
+
+    public String getcUsername() {
+        return cUsername;
+    }
+
+    public void setcUsername(String cUsername) {
+        this.cUsername = cUsername == null ? null : cUsername.trim();
+    }
 
 	@Override
-	public String toString() { 
-		return "TUser [id=" + id + ", age=" + age + ", salary=" + salary + ", cId=" + cId + ", birthday=" + birthday
-				+ ", gender=" + gender + ", nickname=" + nickname + ", password=" + password + ", remark=" + remark
-				+ ", station=" + station + ", telephone=" + telephone + ", username=" + username + "]";
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-
-	public Integer getcId() {
-		return cId;
-	}
-
-	public void setcId(Integer cId) {
-		this.cId = cId;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	public String getStation() {
-		return station;
-	}
-
-	public void setStation(String station) {
-		this.station = station;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public String toString() {
+		return "TUser [id=" + id + ", cAge=" + cAge + ", cSalary=" + cSalary + ", cId=" + cId + ", cBirthday="
+				+ cBirthday + ", cGender=" + cGender + ", cNickname=" + cNickname + ", cPassword=" + cPassword
+				+ ", cRemark=" + cRemark + ", cStation=" + cStation + ", cTelephone=" + cTelephone + ", cUsername="
+				+ cUsername + "]";
 	}
     
 }

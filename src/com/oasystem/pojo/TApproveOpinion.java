@@ -1,56 +1,53 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
+public class TApproveOpinion {
+    private Integer cId;
 
-public class TApproveOpinion implements Serializable{
-    private Integer Id;
+    private Integer cRequisitionId;
 
-    private Integer RequisitionId;
+    private String cDeptCode;
 
-    private String DeptCode;
+    private String tDeptOpinion;
 
-    private String DeptOpinion;
+    private String cFlag;
 
-    private String Flag;
+    public Integer getcId() {
+        return cId;
+    }
 
-	public Integer getId() {
-		return Id;
-	}
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public Integer getcRequisitionId() {
+        return cRequisitionId;
+    }
 
-	public Integer getRequisitionId() {
-		return RequisitionId;
-	}
+    public void setcRequisitionId(Integer cRequisitionId) {
+        this.cRequisitionId = cRequisitionId;
+    }
 
-	public void setRequisitionId(Integer requisitionId) {
-		RequisitionId = requisitionId;
-	}
+    public String getcDeptCode() {
+        return cDeptCode;
+    }
 
-	public String getDeptCode() {
-		return DeptCode;
-	}
+    public void setcDeptCode(String cDeptCode) {
+        this.cDeptCode = cDeptCode == null ? null : cDeptCode.trim();
+    }
 
-	public void setDeptCode(String deptCode) {
-		DeptCode = deptCode;
-	}
+    public String gettDeptOpinion() {
+        return tDeptOpinion;
+    }
 
-	public String getDeptOpinion() {
-		return DeptOpinion;
-	}
+    public void settDeptOpinion(String tDeptOpinion) {
+        this.tDeptOpinion = tDeptOpinion == null ? null : tDeptOpinion.trim();
+    }
 
-	public void setDeptOpinion(String deptOpinion) {
-		DeptOpinion = deptOpinion;
-	}
+    public String getcFlag() {
+        return cFlag;
+    }
 
-	public String getFlag() {
-		return Flag;
-	}
-
-	public void setFlag(String flag) {
-		Flag = flag;
-	}
-
+    public void setcFlag(String cFlag) {
+        this.cFlag = cFlag == null ? null : cFlag.trim();
+    }
 }

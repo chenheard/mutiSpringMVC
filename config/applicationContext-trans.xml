@@ -31,7 +31,7 @@
 	<!-- 切面 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* com.oasystem.service.*.*(..))" />
+			pointcut="execution(* com.oasystem.services.*.*(..))" />
 	</aop:config>
 
 </beans>

@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="../../js/easyui/ext/jquery.cookie.js"></script>
 		<script src="../../js/easyui/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
 		<script type="text/javascript">
+			
 			// 工具栏
 			var toolbar = [ {
 				id : 'button-view',	
@@ -38,7 +39,7 @@
 				checkbox : true,
 				rowspan : 2
 			}, {
-				field : 'username',
+				field : 'cNickname',
 				title : '名称',
 				width : 80,
 				rowspan : 2
@@ -47,38 +48,39 @@
 		
 			// 定义标题栏
 			var columns = [ [ {
-				field : 'gender',
+				field : 'cGender',
 				title : '性别',
 				width : 60,
 				rowspan : 2,
 				align : 'center'
 			}, {
-				field : 'birthday',
+				field : 'cBirthday',
 				title : '生日',
-				width : 120,
+				width : 140,
 				rowspan : 2,
 				align : 'center'
 			}, {
 				title : '其他信息',
 				colspan : 2
 			}, {
-				field : 'telephone',
+				field : 'cTelephone',
 				title : '电话',
 				width : 800,
 				rowspan : 2
 			} ], [ {
-				field : 'station',
+				field : 'cStation',
 				title : '单位',
-				width : 80,
+				width : 100,
 				align : 'center'
 			}, {
-				field : 'salary',
+				field : 'cSalary',
 				title : '工资',
 				width : 80,
 				align : 'right'
 			} ] ];
 			$(function(){
 				// 初始化 datagrid
+				debugger;
 				// 创建grid
 				$('#grid').datagrid( {
 					iconCls : 'icon-forward',
@@ -94,7 +96,7 @@
 					onClickRow : onClickRow,
 					onDblClickRow : doDblClickRow
 				});
-				
+				debugger;
 				$("body").css({visibility:"visible"});
 				
 			});

@@ -1,47 +1,43 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
+public class TPermission {
+    private Integer cId;
 
-public class TPermission implements Serializable{
-    private Integer Id;
+    private String cDescription;
 
-    private String Description;
+    private String cKeyword;
 
-    private String Keyword;
+    private String cName;
 
-    private String Name;
+    public Integer getcId() {
+        return cId;
+    }
 
-	public Integer getId() {
-		return Id;
-	}
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public String getcDescription() {
+        return cDescription;
+    }
 
-	public String getDescription() {
-		return Description;
-	}
+    public void setcDescription(String cDescription) {
+        this.cDescription = cDescription == null ? null : cDescription.trim();
+    }
 
-	public void setDescription(String description) {
-		Description = description;
-	}
+    public String getcKeyword() {
+        return cKeyword;
+    }
 
-	public String getKeyword() {
-		return Keyword;
-	}
+    public void setcKeyword(String cKeyword) {
+        this.cKeyword = cKeyword == null ? null : cKeyword.trim();
+    }
 
-	public void setKeyword(String keyword) {
-		Keyword = keyword;
-	}
+    public String getcName() {
+        return cName;
+    }
 
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
-	}
-
-   
+    public void setcName(String cName) {
+        this.cName = cName == null ? null : cName.trim();
+    }
 }

@@ -1,88 +1,85 @@
 package com.oasystem.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TTmplt  implements Serializable{
-    private Integer Id;
+public class TTmplt {
+    private Integer cId;
 
-    private String TempName;
+    private String cTempName;
 
-    private String SubmitDept;
+    private String cSubmitDept;
 
-    private Date SubmitDate;
+    private Date cSubmitDate;
 
-    private String ApproveDept1;
+    private String cApproveDept1;
 
-    private String ApproveDept2;
+    private String cApproveDept2;
 
-    private String ApproveDept3;
+    private String cApproveDept3;
 
-    private String ApproveDept4;
+    private String cApproveDept4;
 
-	public Integer getId() {
-		return Id;
-	}
+    public Integer getcId() {
+        return cId;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
 
-	public String getTempName() {
-		return TempName;
-	}
+    public String getcTempName() {
+        return cTempName;
+    }
 
-	public void setTempName(String tempName) {
-		TempName = tempName;
-	}
+    public void setcTempName(String cTempName) {
+        this.cTempName = cTempName == null ? null : cTempName.trim();
+    }
 
-	public String getSubmitDept() {
-		return SubmitDept;
-	}
+    public String getcSubmitDept() {
+        return cSubmitDept;
+    }
 
-	public void setSubmitDept(String submitDept) {
-		SubmitDept = submitDept;
-	}
+    public void setcSubmitDept(String cSubmitDept) {
+        this.cSubmitDept = cSubmitDept == null ? null : cSubmitDept.trim();
+    }
 
-	public Date getSubmitDate() {
-		return SubmitDate;
-	}
+    public Date getcSubmitDate() {
+        return cSubmitDate;
+    }
 
-	public void setSubmitDate(Date submitDate) {
-		SubmitDate = submitDate;
-	}
+    public void setcSubmitDate(Date cSubmitDate) {
+        this.cSubmitDate = cSubmitDate;
+    }
 
-	public String getApproveDept1() {
-		return ApproveDept1;
-	}
+    public String getcApproveDept1() {
+        return cApproveDept1;
+    }
 
-	public void setApproveDept1(String approveDept1) {
-		ApproveDept1 = approveDept1;
-	}
+    public void setcApproveDept1(String cApproveDept1) {
+        this.cApproveDept1 = cApproveDept1 == null ? null : cApproveDept1.trim();
+    }
 
-	public String getApproveDept2() {
-		return ApproveDept2;
-	}
+    public String getcApproveDept2() {
+        return cApproveDept2;
+    }
 
-	public void setApproveDept2(String approveDept2) {
-		ApproveDept2 = approveDept2;
-	}
+    public void setcApproveDept2(String cApproveDept2) {
+        this.cApproveDept2 = cApproveDept2 == null ? null : cApproveDept2.trim();
+    }
 
-	public String getApproveDept3() {
-		return ApproveDept3;
-	}
+    public String getcApproveDept3() {
+        return cApproveDept3;
+    }
 
-	public void setApproveDept3(String approveDept3) {
-		ApproveDept3 = approveDept3;
-	}
+    public void setcApproveDept3(String cApproveDept3) {
+        this.cApproveDept3 = cApproveDept3 == null ? null : cApproveDept3.trim();
+    }
 
-	public String getApproveDept4() {
-		return ApproveDept4;
-	}
+    public String getcApproveDept4() {
+        return cApproveDept4;
+    }
 
-	public void setApproveDept4(String approveDept4) {
-		ApproveDept4 = approveDept4;
-	}
-    
-    
+    public void setcApproveDept4(String cApproveDept4) {
+        this.cApproveDept4 = cApproveDept4 == null ? null : cApproveDept4.trim();
+    }
 }
