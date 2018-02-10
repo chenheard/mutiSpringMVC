@@ -19,11 +19,10 @@ public class LoginAction {
  		TUser queryUser = userService.queryUser(loginUser);
 		System.out.println(queryUser);
 		if(null != queryUser && "".equalsIgnoreCase(queryUser.getUsername())) {
+			System.out.println(123232323);
 			System.out.println(123);
 			return "home";
 		}else {
-			System.out.println(122223);
-			//没有通过则返回登录页面
 			return "login";
 		}
 	}
