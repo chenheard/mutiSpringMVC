@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oasystem.dao.TApproveOpinionMapper" >
+  <resultMap id="BaseResultMap" type="com.oasystem.pojo.TApproveOpinion" >
+    <id column="C_ID" property="cId" jdbcType="INTEGER" />
+    <result column="C_REQUISITION_ID" property="cRequisitionId" jdbcType="INTEGER" />
+    <result column="C_DEPT_CODE" property="cDeptCode" jdbcType="VARCHAR" />
+    <result column="t_DEPT_OPINION" property="tDeptOpinion" jdbcType="VARCHAR" />
+    <result column="C_FLAG" property="cFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_REQUISITION_ID, C_DEPT_CODE, t_DEPT_OPINION, C_FLAG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oasystem.pojo.TApproveOpinionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_approve_opinion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_approve_opinion
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_approve_opinion
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oasystem.pojo.TApproveOpinionExample" >
+    delete from t_approve_opinion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oasystem.pojo.TApproveOpinion" >
+    insert into t_approve_opinion (C_ID, C_REQUISITION_ID, C_DEPT_CODE, 
+      t_DEPT_OPINION, C_FLAG)
+    values (#{cId,jdbcType=INTEGER}, #{cRequisitionId,jdbcType=INTEGER}, #{cDeptCode,jdbcType=VARCHAR}, 
+      #{tDeptOpinion,jdbcType=VARCHAR}, #{cFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oasystem.pojo.TApproveOpinion" >
+    insert into t_approve_opinion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="cRequisitionId != null" >
+        C_REQUISITION_ID,
+      </if>
+      <if test="cDeptCode != null" >
+        C_DEPT_CODE,
+      </if>
+      <if test="tDeptOpinion != null" >
+        t_DEPT_OPINION,
+      </if>
+      <if test="cFlag != null" >
+        C_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cRequisitionId != null" >
+        #{cRequisitionId,jdbcType=INTEGER},
+      </if>
+      <if test="cDeptCode != null" >
+        #{cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tDeptOpinion != null" >
+        #{tDeptOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="cFlag != null" >
+        #{cFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oasystem.pojo.TApproveOpinionExample" resultType="java.lang.Integer" >
+    select count(*) from t_approve_opinion
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_approve_opinion
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cRequisitionId != null" >
+        C_REQUISITION_ID = #{record.cRequisitionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cDeptCode != null" >
+        C_DEPT_CODE = #{record.cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tDeptOpinion != null" >
+        t_DEPT_OPINION = #{record.tDeptOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cFlag != null" >
+        C_FLAG = #{record.cFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_approve_opinion
+    set C_ID = #{record.cId,jdbcType=INTEGER},
+      C_REQUISITION_ID = #{record.cRequisitionId,jdbcType=INTEGER},
+      C_DEPT_CODE = #{record.cDeptCode,jdbcType=VARCHAR},
+      t_DEPT_OPINION = #{record.tDeptOpinion,jdbcType=VARCHAR},
+      C_FLAG = #{record.cFlag,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oasystem.pojo.TApproveOpinion" >
+    update t_approve_opinion
+    <set >
+      <if test="cRequisitionId != null" >
+        C_REQUISITION_ID = #{cRequisitionId,jdbcType=INTEGER},
+      </if>
+      <if test="cDeptCode != null" >
+        C_DEPT_CODE = #{cDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tDeptOpinion != null" >
+        t_DEPT_OPINION = #{tDeptOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="cFlag != null" >
+        C_FLAG = #{cFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oasystem.pojo.TApproveOpinion" >
+    update t_approve_opinion
+    set C_REQUISITION_ID = #{cRequisitionId,jdbcType=INTEGER},
+      C_DEPT_CODE = #{cDeptCode,jdbcType=VARCHAR},
+      t_DEPT_OPINION = #{tDeptOpinion,jdbcType=VARCHAR},
+      C_FLAG = #{cFlag,jdbcType=VARCHAR}
+    where C_ID = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>
